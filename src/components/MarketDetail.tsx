@@ -30,22 +30,23 @@ const MarketDetail = ({ initialMarket }: Props) => {
         </Link>
         <Typography sx={{ fontSize: 14, color: "text.primary" }}>{market.name}</Typography>
       </Breadcrumbs>
-      <Typography
-        variant="body2"
-        sx={{ color: "text.secondary", textTransform: "uppercase", fontSize: 11, mb: 1 }}
-      >
-        {market.sport}
-      </Typography>
-      <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, lineHeight: 1.4 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 1 }}>
+        <Chip
+          label={market.sport}
+          size="small"
+          variant="outlined"
+          sx={{ textTransform: "uppercase", fontSize: 11 }}
+        />
+        <Chip
+          label={market.status}
+          size="small"
+          color={market.status === "open" ? "success" : "default"}
+          variant="outlined"
+        />
+      </Box>
+      <Typography variant="h5" sx={{ fontWeight: 700, mb: 4, lineHeight: 1.4 }}>
         {market.name}
       </Typography>
-      <Chip
-        label={market.status}
-        size="small"
-        color={market.status === "open" ? "success" : "default"}
-        variant="outlined"
-        sx={{ mb: 3 }}
-      />
       <Box sx={{ display: "flex", gap: 2, mb: 4 }}>
         <Paper variant="outlined" sx={{ flex: 1, p: 3, textAlign: "center" }}>
           <Typography variant="caption" sx={{ color: "text.secondary", display: "block", mb: 0.5 }}>
