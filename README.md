@@ -56,4 +56,3 @@ Open [http://localhost:3000](http://localhost:3000).
 - Sell / close positions
 - WebSocket prices for live updates without polling
 - Rate-limit caching on Onyx API calls
-- Market search and filtering

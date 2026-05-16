@@ -11,11 +11,14 @@ Browser
   │     portfolio/page.tsx        → fetches positions + orders from DB, enriches with live prices
   │
   ├── Client Components
+  │     MarketList.tsx            → search state, filters market list client-side
   │     MarketDetail.tsx          → SWR polls /api/markets/{symbol} every 15s
   │     OrderForm.tsx             → POST /api/orders, mutates /api/balance on success
   │     Nav.tsx                   → SWR fetches /api/balance, refreshes every 30s
   │
   └── API Routes (Next.js Route Handlers)
+        GET  /api/markets         → proxy to Onyx market list
+        GET  /api/markets/[sym]   → proxy to Onyx single market + prices
         POST /api/orders          → validates, fetches live price, writes order + position + balance
         GET  /api/positions       → returns positions enriched with live prices and unrealized P&L
         GET  /api/balance         → returns authenticated user's current balance
@@ -123,7 +126,7 @@ The two components that don't scale linearly:
 
 - **Passwords** are hashed with bcrypt at cost factor 12 before storage. The plain-text password never touches the database.
 - **Sessions** use JWT tokens signed with `NEXTAUTH_SECRET`. Tokens are short-lived and verified server-side on every protected request.
-- **Route protection** is enforced in `proxy.ts` (Next.js middleware). Unauthenticated requests to `/markets`, `/portfolio`, and all `/api/orders` and `/api/positions` routes are redirected to the sign-in page before they reach any route handler.
+- **Route protection** is enforced in `proxy.ts` (Next.js middleware). Unauthenticated requests to `/markets`, `/portfolio`, `/api/orders`, `/api/positions`, and `/api/balance` are redirected to the sign-in page before they reach any route handler.
 - **All API routes** re-verify the session independently — middleware is a first line of defense, not the only one.
 - **No user input reaches the database unparameterized.** Drizzle uses parameterized queries exclusively; there is no raw SQL with string interpolation.
 

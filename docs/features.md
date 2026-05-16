@@ -2,36 +2,29 @@
 
 ## Authentication
 
-- **Sign up** — email + password, bcrypt hashed (cost 12), user created with $1,000.00 starting balance
-- **Sign in** — credentials validated against DB, JWT session issued
-- **Protected routes** — middleware redirects unauthenticated users to `/auth/signin` for all market, portfolio, and API routes
-- **Sign out** — clears session, redirects to sign in
+- **Sign up** with email and password — account is created with a $1,000 starting balance
+- **Sign in / sign out** with session persistence via JWT
+- All routes and API endpoints are protected — unauthenticated users are redirected to the sign-in page
 
 ## Market Browsing
 
-- **Market list** — all active prediction markets fetched from the Onyx API, displayed as cards with YES and NO prices
-- **Market detail** — full market view with sport/category label, status chip, live YES/NO price cards, and order form
-- **Live prices** — market detail polls the Onyx API every 15 seconds and updates prices without a page reload
-- **Breadcrumb navigation** — "Markets > [market name]" link above the market title for easy back-navigation
+- **Market list** — browse all available prediction markets from the Onyx API, showing live YES and NO prices in cents
+- **Search** — filter markets by name in real time, client-side with no extra API call
+- **Market detail** — click any market to see a dedicated page with live price updates every 15 seconds
 
 ## Order Placement
 
-- **Buy YES** — purchase shares in a market resolving YES at the current YES price
-- **Buy NO** — purchase shares in a market resolving NO at the current NO price
-- **Instant fill** — orders fill immediately at the current Onyx API price (no order book, no slippage)
-- **Cost preview** — total cost shown before confirming (`quantity × fill_price`)
-- **Balance check** — order rejected with an error if balance is insufficient
-- **Balance update** — nav balance updates immediately after a successful order via SWR revalidation
+- **Buy YES or Buy NO** on any open market
+- Orders fill instantly at the current market price fetched at submission time — no order book, no slippage simulation
+- **Cost preview** — shows total cost before confirming (quantity × price)
+- Balance is validated server-side before any order is written — insufficient funds returns an error
+- **Inline feedback** — success and error states shown directly in the order form without a page reload
 
 ## Portfolio
 
-- **Cash balance** — current paper balance displayed at the top
-- **Unrealized P&L** — total P&L across all open positions, color-coded green/red
-- **Positions table** — one row per market/side with quantity, avg fill price, current price, and per-position P&L
-- **Order history** — full fill history, most recent first, with market, side, quantity, fill price, total cost, and timestamp
-- **Empty states** — friendly messages when no positions or orders exist yet
-
-## Navigation
-
-- **Top nav** — always visible when signed in; shows app name, Markets and Portfolio links, and live balance
-- **Balance polling** — nav balance refreshes every 30 seconds automatically
+- **Cash balance** — displayed in the nav header and on the portfolio page, updates instantly after each order
+- **Positions table** — all current holdings with market name, side (YES/NO), quantity, average fill price, current price, and unrealized P&L per position
+- **Unrealized P&L** — computed live at page load using current Onyx prices; green for profit, red for loss
+- **Total P&L** — sum of all open position P&L shown as a summary card
+- **Order history** — full log of every fill with symbol, side, quantity, fill price, total cost, and timestamp; sorted most recent first
+- Empty states for both positions and order history when the user has no activity yet
