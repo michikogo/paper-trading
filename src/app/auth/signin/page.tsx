@@ -14,8 +14,7 @@ const SignInPage = () => {
         </Suspense>
         <Box sx={{ mt: 2, textAlign: "center" }}>
           <Typography variant="body2">
-            No account?{" "}
-            <a href="/auth/signup">Sign up</a>
+            No account? <a href="/auth/signup">Sign up</a>
           </Typography>
         </Box>
       </Paper>

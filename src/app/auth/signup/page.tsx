@@ -12,8 +12,7 @@ const SignUpPage = () => {
         <SignUpForm />
         <Box sx={{ mt: 2, textAlign: "center" }}>
           <Typography variant="body2">
-            Already have an account?{" "}
-            <a href="/auth/signin">Sign in</a>
+            Already have an account? <a href="/auth/signin">Sign in</a>
           </Typography>
         </Box>
       </Paper>
