@@ -60,7 +60,7 @@ const PortfolioPage = async () => {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Typography variant="h4" sx={{ fontWeight: 700, mb: 1 }}>
+      <Typography variant="h4" sx={{ fontWeight: 700, mb: 1, cursor: "default" }}>
         Portfolio
       </Typography>
 
@@ -86,7 +86,7 @@ const PortfolioPage = async () => {
         </Paper>
       </Box>
 
-      <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+      <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, cursor: "default" }}>
         Positions
       </Typography>
       {positionsWithPnl.length === 0 ? (
@@ -97,7 +97,7 @@ const PortfolioPage = async () => {
         <Paper variant="outlined" sx={{ mb: 4, overflow: "hidden" }}>
           <Table size="small">
             <TableHead>
-              <TableRow sx={{ bgcolor: "grey.50" }}>
+              <TableRow sx={{ bgcolor: "grey.50", cursor: "default" }}>
                 <TableCell sx={{ fontWeight: 600 }}>Market</TableCell>
                 <TableCell sx={{ fontWeight: 600 }}>Side</TableCell>
                 <TableCell sx={{ fontWeight: 600 }} align="right">
@@ -151,7 +151,7 @@ const PortfolioPage = async () => {
         </Paper>
       )}
 
-      <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+      <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, cursor: "default" }}>
         Order History
       </Typography>
       {userOrders.length === 0 ? (
@@ -160,7 +160,7 @@ const PortfolioPage = async () => {
         <Paper variant="outlined" sx={{ overflow: "hidden" }}>
           <Table size="small">
             <TableHead>
-              <TableRow sx={{ bgcolor: "grey.50" }}>
+              <TableRow sx={{ bgcolor: "grey.50", cursor: "default" }}>
                 <TableCell sx={{ fontWeight: 600 }}>Market</TableCell>
                 <TableCell sx={{ fontWeight: 600 }}>Side</TableCell>
                 <TableCell sx={{ fontWeight: 600 }} align="right">
