@@ -2,7 +2,7 @@
 
 import React from "react"
 
-const LocalTime = ({ iso }: { iso: string }) => {
+const LocalTime = ({ iso }: { iso: string | Date }) => {
   return (
     <>
       {new Date(iso).toLocaleDateString("en-US", {
