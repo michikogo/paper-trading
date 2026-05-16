@@ -65,7 +65,7 @@ const PortfolioPage = async () => {
       </Typography>
 
       <Box sx={{ display: "flex", gap: 3, mb: 4 }}>
-        <Paper variant="outlined" sx={{ p: 3, flex: 1 }}>
+        <Paper variant="outlined" sx={{ p: 3, flex: 1, cursor: "default" }}>
           <Typography variant="caption" sx={{ color: "text.secondary", display: "block", mb: 0.5 }}>
             Cash Balance
           </Typography>
@@ -73,7 +73,7 @@ const PortfolioPage = async () => {
             ${parseFloat(user.balance).toFixed(2)}
           </Typography>
         </Paper>
-        <Paper variant="outlined" sx={{ p: 3, flex: 1 }}>
+        <Paper variant="outlined" sx={{ p: 3, flex: 1, cursor: "default" }}>
           <Typography variant="caption" sx={{ color: "text.secondary", display: "block", mb: 0.5 }}>
             Unrealized P&amp;L
           </Typography>
@@ -116,7 +116,7 @@ const PortfolioPage = async () => {
             </TableHead>
             <TableBody>
               {positionsWithPnl.map((pos) => (
-                <TableRow key={pos.id} hover>
+                <TableRow key={pos.id} hover sx={{ cursor: "default" }}>
                   <TableCell>
                     <Typography variant="body2" sx={{ fontWeight: 500 }}>
                       {pos.market_name}
@@ -179,7 +179,7 @@ const PortfolioPage = async () => {
             </TableHead>
             <TableBody>
               {[...userOrders].reverse().map((order) => (
-                <TableRow key={order.id} hover>
+                <TableRow key={order.id} hover sx={{ cursor: "default" }}>
                   <TableCell>
                     <Typography variant="body2" sx={{ fontWeight: 500 }}>
                       {order.market_name}
