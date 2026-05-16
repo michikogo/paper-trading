@@ -1,6 +1,5 @@
 import React, { Suspense } from "react"
-import { Container, Paper, Typography, Box, Link as MuiLink } from "@mui/material"
-import Link from "next/link"
+import { Container, Paper, Typography, Box } from "@mui/material"
 import SignInForm from "@/components/SignInForm"
 
 const SignInPage = () => {
@@ -15,10 +14,7 @@ const SignInPage = () => {
         </Suspense>
         <Box sx={{ mt: 2, textAlign: "center" }}>
           <Typography variant="body2">
-            No account?{" "}
-            <MuiLink component={Link} href="/auth/signup">
-              Sign up
-            </MuiLink>
+            No account? <a href="/auth/signup">Sign up</a>
           </Typography>
         </Box>
       </Paper>
