@@ -16,6 +16,7 @@ import { db } from "@/db"
 import { users, positions as positionsTable, orders as ordersTable } from "@/db/schema"
 import { eq } from "drizzle-orm"
 import { onyxFetch, getYesPrice } from "@/lib/onyx"
+import LocalTime from "@/components/LocalTime"
 
 const PortfolioPage = async () => {
   const session = await auth()
@@ -202,12 +203,7 @@ const PortfolioPage = async () => {
                   </TableCell>
                   <TableCell align="right">${parseFloat(order.total_cost).toFixed(2)}</TableCell>
                   <TableCell align="right" sx={{ color: "text.secondary", whiteSpace: "nowrap" }}>
-                    {new Date(order.created_at).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    <LocalTime iso={order.created_at} />
                   </TableCell>
                 </TableRow>
               ))}
