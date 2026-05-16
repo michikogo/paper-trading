@@ -25,12 +25,12 @@ const MarketDetail = ({ initialMarket }: Props) => {
   return (
     <Box>
       <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 1 }}>
-        <Typography
-          variant="body2"
-          sx={{ color: "text.secondary", textTransform: "uppercase", fontSize: 11, lineHeight: 1 }}
-        >
-          {market.sport}
-        </Typography>
+        <Chip
+          label={market.sport}
+          size="small"
+          variant="outlined"
+          sx={{ textTransform: "uppercase", fontSize: 11 }}
+        />
         <Chip
           label={market.status}
           size="small"
