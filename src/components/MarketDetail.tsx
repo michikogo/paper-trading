@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Typography, Box, Paper, Chip } from "@mui/material"
+import { Typography, Box, Paper, Chip, Breadcrumbs, Link } from "@mui/material"
 import useSWR from "swr"
 import { OnyxMarket, getYesPrice } from "@/lib/onyx"
 import OrderForm from "@/components/OrderForm"
@@ -24,6 +24,12 @@ const MarketDetail = ({ initialMarket }: Props) => {
 
   return (
     <Box>
+      <Breadcrumbs sx={{ mb: 2, fontSize: 14 }}>
+        <Link href="/markets" underline="hover" color="text.secondary">
+          Markets
+        </Link>
+        <Typography sx={{ fontSize: 14, color: "text.primary" }}>{market.name}</Typography>
+      </Breadcrumbs>
       <Typography
         variant="body2"
         sx={{ color: "text.secondary", textTransform: "uppercase", fontSize: 11, mb: 1 }}
