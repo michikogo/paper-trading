@@ -1,6 +1,5 @@
 import React from "react"
-import { Container, Paper, Typography, Box, Link as MuiLink } from "@mui/material"
-import Link from "next/link"
+import { Container, Paper, Typography, Box } from "@mui/material"
 import SignUpForm from "@/components/SignUpForm"
 
 const SignUpPage = () => {
@@ -14,9 +13,7 @@ const SignUpPage = () => {
         <Box sx={{ mt: 2, textAlign: "center" }}>
           <Typography variant="body2">
             Already have an account?{" "}
-            <MuiLink component={Link} href="/auth/signin">
-              Sign in
-            </MuiLink>
+            <a href="/auth/signin">Sign in</a>
           </Typography>
         </Box>
       </Paper>
